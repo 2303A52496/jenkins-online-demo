@@ -1,0 +1,79 @@
+name: Jenkins Pipeline CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  jenkins-pipeline:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup environment
+      run: |
+        echo "Setting up Jenkins pipeline simulation"
+        
+    - name: Stage 1 - Hello
+      run: |
+        echo "===========================================" 
+        echo "Stage: Hello"
+        echo "===========================================" 
+        echo "Hello World from Jenkins!"
+        
+    - name: Stage 2 - Build
+      run: |
+        echo ""
+        echo "===========================================" 
+        echo "Stage: Build"
+        echo "===========================================" 
+        echo "Building the application..."
+        echo "Build step completed"
+        
+    - name: Stage 3 - Test
+      run: |
+        echo ""
+        echo "===========================================" 
+        echo "Stage: Test - Running Test Cases"
+        echo "===========================================" 
+        echo "Running tests..."
+        echo ""
+        echo "✓ Test Case 1: Unit Test - Passed"
+        echo "✓ Test Case 2: Integration Test - Passed"
+        echo "✓ Test Case 3: API Test - Passed"
+        echo "✓ Test Case 4: Database Test - Passed"
+        echo "✓ Test Case 5: Security Test - Passed"
+        echo ""
+        echo "===========================================" 
+        echo "Test Summary:"
+        echo "Total Tests: 5"
+        echo "Passed: 5"
+        echo "Failed: 0"
+        echo "Success Rate: 100%"
+        echo "===========================================" 
+        
+    - name: Stage 4 - Deploy
+      run: |
+        echo ""
+        echo "===========================================" 
+        echo "Stage: Deploy"
+        echo "===========================================" 
+        echo "Deploying application..."
+        echo "Deployment successful!"
+        
+    - name: Pipeline Summary
+      run: |
+        echo ""
+        echo "╔═══════════════════════════════════════╗"
+        echo "║   Pipeline Completed Successfully!    ║"
+        echo "╠═══════════════════════════════════════╣"
+        echo "║ ✓ Hello Stage       - PASSED         ║"
+        echo "║ ✓ Build Stage       - PASSED         ║"
+        echo "║ ✓ Test Stage        - PASSED (5/5)   ║"
+        echo "║ ✓ Deploy Stage      - PASSED         ║"
+        echo "╚═══════════════════════════════════════╝"
